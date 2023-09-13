@@ -1,14 +1,19 @@
-#Sign up
+# Sign up
 
+```
 {
     "username": "ajsklfjl",
     "password": "pass1234",
     "email": "mail@mail.com"
 }
+```
 
-#Login
+# Login
+```
 {
     "username": "ajsklfjl",
     "password": "pass1234"
 }
+```
+
 
