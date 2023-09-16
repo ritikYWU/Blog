@@ -6,7 +6,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework import status
 
-from .serializers import RegisterSerializers
+from .serializers import RegisterSerializers,UpdatePasswordSerializers
 
 
 @api_view(['GET','POST'])
@@ -19,3 +19,15 @@ def register(request):
         return Response(data={'message': 'User created successfully.', 'user': serialized_data.data}, status=status.HTTP_201_CREATED)
     
     return Response(data={'message': serialized_data.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET','POST'])
+@permission_classes([AllowAny])
+def change_password(request):
+    serialized_data = UpdatePasswordSerializers(data=request.data)
+
+    if serialized_data.is_valid():
+        serialized_data.save()
+        return Response(data={'message': 'Password updated successfully.', 'user': serialized_data.data}, status=status.HTTP_200_OK) 
+
+    return Response(data={'message':serialized_data.error_messages})
