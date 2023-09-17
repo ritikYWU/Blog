@@ -3,15 +3,17 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.permissions import IsAuthenticated
+from rest_framework import serializers
 
 from .models import Blog
+from .serializers import BlogSerializer
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def blog_list(request):
-    lists = Blog.objects.all()
-    print(lists)
-    return Response(data={'list': lists})
+    serialized_data = BlogSerializer(Blog.objects.all(), many=True)
+    return Response({'list': serialized_data.data})
 
 
 @api_view(['POST'])
