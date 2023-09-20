@@ -6,7 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 
 from .models import Blog
-from .serializers import BlogSerializer
+from .serializers import BlogSerializer, CreateBlogSerializer
 
 
 @api_view(['GET'])
@@ -15,11 +15,17 @@ def blog_list(request):
     serialized_data = BlogSerializer(Blog.objects.all(), many=True)
     return Response({'list': serialized_data.data})
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def single_blog(request):
+    blog = BlogSerializer(Blog.objects.get(id=request.id), many=False)
+    return Response('Single blog should be returned')
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create(request):
-    serialized_data = BlogSerializer(data=request.data)
+    serialized_data = CreateBlogSerializer(data=request.data)
 
     if serialized_data.is_valid():
         serialized_data.save()

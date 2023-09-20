@@ -9,8 +9,14 @@ class UserSerializer(serializers.ModelSerializer):
 
 class BlogSerializer(serializers.ModelSerializer):
 
-    # created_by = UserSerializer()
+    created_by = UserSerializer()
 
+    class Meta:
+        model = Blog
+        fields = ['id', 'title', 'blog', 'created_date', 'updated_date', 'created_by']
+
+
+class CreateBlogSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blog
         fields = ['id', 'title', 'blog', 'created_date', 'updated_date', 'created_by']
