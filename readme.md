@@ -33,10 +33,11 @@ API Documentation
 * `api/login/token` - POST
 * `api/login/token/refresh` - POST
 * `api/user/register` - POST
-* a`pi/change-password` - POST
+* `api/change-password` - POST
 
 ## Blog
 * `api/blog/list` - GET
 * `api/blog/create` - POST
-* `api/blog/update` - PUT, PATCH
-* `api/blog/delete` - Delete
+* `api/blog/update/:id` - PUT, PATCH
+* `api/blog/delete/:id` - DELETE
+* `api/blog/search/` - POST
