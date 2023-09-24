@@ -59,4 +59,9 @@ def update(request, pk):
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
 def delete(request, pk):
-    return Response('Delete')
+    try:
+        blog_post = Blog.objects.get(pk=pk)
+        blog_post.delete()
+        return Response(data={"status":status.HTTP_200_OK, "message":"Blog post deleted"})
+    except blog_post.DoesNotExist:
+        return Response(data={"status":status.HTTP_404_NOT_FOUND, "message":"Blog not found"})
