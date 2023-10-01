@@ -1,13 +1,22 @@
 runserver:
-	@echo "Running server............"
+	@echo "Running server....."
 	@cd backend && source venv/bin/activate && python manage.py runserver
 	
 migrate:
-	@echo "Migrating the database........"
+	@echo "Migrating the database....."
 	@cd backend && source venv/bin/activate && python manage.py makemigrations && python manage.py migrate
 
 install:
-	@echo "Installing the dependencies......."
+	@echo "Installing the dependencies....."
 	@cd backend && source venv/bin/activate && pip install -r requirements.txt
 	
 
+
+
+dev:
+	@echo "Creating the site....."
+	@cd frontend && npm run dev
+
+install-react:
+	@echo "Installing react dependencies"
+	@echo frontend && npm install
