@@ -1,0 +1,43 @@
+.username, .password{
+    padding: 1rem 0;
+    display: flex;
+    gap: 1rem;
+    font-size: 1.5rem;
+}
+
+.username input, .password input{
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #ccc;
+    width: 180%;
+    margin: 1rem 0 0;
+    font-size: 1.5rem;
+    padding-bottom: 10px;
+}
+
+.forgot-password{
+    margin: 0 0 2rem;
+    font-size: 1.2rem;
+}
+
+.button button{
+    width: 100%;
+    height: 3rem;
+    border: none;
+    border-radius: 10px;
+    background-color: #579BB1;
+    color: #434242;
+    font-size: 1.3rem;
+    font-weight: 900;
+}
+
+.no-account{
+    padding-top: 2rem;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.no-account p a, .forgot-password a{
+    color: #579BB1;
+    font-weight: 600;
+}
