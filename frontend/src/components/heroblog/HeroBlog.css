@@ -1,0 +1,35 @@
+.blog-post{
+    margin: 2rem 10rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 70%;
+    max-height: 45vh;
+    background-color:  rgba(87, 155, 177, 0.1);
+    
+}
+
+.blog-post img{
+    width: 50%;
+}
+
+.content{
+    width: 70%;
+    padding: 1rem 1rem;
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    gap: .7rem;
+}
+
+.content h3{
+    font-size: 4.5rem;
+}
+
+.content p{
+    font-size: .8rem;
+    width: 100%;
+    white-space: pre-wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

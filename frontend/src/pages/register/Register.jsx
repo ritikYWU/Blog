@@ -1,19 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import LoginForm from './components/LoginForm'
-import './Login.css'
+import RegisterForm from './components/Registerform'
 
-const Login = () => {
-
+const Register = () => {
   return (
     <div className='login'>
         <div className="icon">
           <Link to='/'>#Hash</Link>
         </div>
         <div className="left-login">
-            <h2>Login</h2>
-            <LoginForm />
+            <h2>Signup</h2>
+            <RegisterForm />
         </div>
         <div className="right-login">
             <h2 className='banner-text'>
@@ -24,7 +22,8 @@ const Login = () => {
         </div>
        
     </div>
+    
   )
 }
 
-export default Login
+export default Register

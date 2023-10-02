@@ -24,10 +24,15 @@ const LogInService = async (username, password) => {
         localStorage.setItem('accessToken',accessToken)
         localStorage.setItem('refreshToken', refreshToken)
 
+        console.log('login successful')
+
+        return {success:true}
+
     }
 
     else{
         console.log('Login Failed')
+        return {success:false}
     }
 
 }

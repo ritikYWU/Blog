@@ -1,6 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework import status
 from rest_framework.pagination import PageNumberPagination
 
@@ -11,7 +11,7 @@ from .serializers import BlogSerializer, CreateBlogSerializer
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 def blog_post_list(request):
     paginator = PageNumberPagination()
 
@@ -22,7 +22,7 @@ def blog_post_list(request):
     return paginator.get_paginated_response(serialized_data.data)
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 def blog_post(request, pk):
     try:
         blog_post = Blog.objects.get(pk=pk)

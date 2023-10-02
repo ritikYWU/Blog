@@ -1,11 +1,11 @@
-.username, .password{
+.username, .password, .email{
     padding: 1rem 0;
     display: flex;
     gap: 1rem;
     font-size: 1.5rem;
 }
 
-.username input, .password input{
+.username input, .password input, .email input{
     border: none;
     outline: none;
     border-bottom: 3px solid #ccc;
@@ -29,6 +29,7 @@
     color: #434242;
     font-size: 1.3rem;
     font-weight: 900;
+    margin-top: 1rem;
 }
 
 .no-account{

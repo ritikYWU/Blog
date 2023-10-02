@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
 
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
@@ -12,6 +13,9 @@ from .serializers import RegisterSerializers,UpdatePasswordSerializers
 @api_view(['GET','POST'])
 @permission_classes([AllowAny])
 def register(request):
+    password = request.data.get('password')
+    request.data['password'] = make_password(password)
+    
     serialized_data = RegisterSerializers(data=request.data)
 
     if serialized_data.is_valid():

@@ -1,18 +1,17 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
 
 
-import LogInService from '../../../services/LogInService'
-import './LoginForm.css'
+import '../../login/components/LoginForm.css'
+import RegisterService from '../../../services/RegisterService';
 
-const LoginForm = () => {
+const RegisterForm = () => {
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
-    const [loginData, setLoginData] = useState({})
+    const [email, setEmail] = useState()
 
     const navigate = useNavigate();
-
 
     const isLoggedIn = localStorage.getItem('accessToken')
     useEffect(() => {
@@ -21,42 +20,46 @@ const LoginForm = () => {
         }
     })
 
-
     const handleUsername = (e) => {
         setUsername(e.target.value)
+    }
+
+    const handleEmail = (e) => {
+        setEmail(e.target.value)
     }
 
     const handlePassword = (e) => {
         setPassword(e.target.value)
     }
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         
         try{
-            const response = await LogInService(username, password)
+            const response = await RegisterService(username,email, password)
             console.log(response.success)
 
             if (response.success){
-                toast.success("Login successful.",{
-                    position:'top-center'
-                },
-                {
-                    style: { fontSize: "0.7rem",  },
-                });
-    
-                console.log('login successful')
-                navigate('/')
-            }
-            else{
-                toast.error("Invalid username or password.",{
+                toast.success("Registered successful.", {
                     position:'top-center'
                 },
                 {
                     style: { fontSize: "0.7rem" },
                 });
     
-                console.log('login failed')
+                console.log('register successful')
+                navigate('/login')
+            }
+            else{
+                toast.error("Error", {
+                    position:'top-center'
+                },
+                {
+                    style: { fontSize: "0.7rem" },
+                });
+    
+                console.log('signup failed')
             }
         }
         catch{
@@ -70,30 +73,31 @@ const LoginForm = () => {
         }
         
       };
+        
 
   return (
     <div>
         <form method='POST'>
             <div className="username">
-                <input type="text" name="username"placeholder='Enter your username' onChange={handleUsername}/>
+                <input type="text" name="username" placeholder='Enter your username' onChange={handleUsername}/>
+            </div>
+
+            <div className="email">
+                <input type="text" name="email" placeholder='Enter your email' onChange={handleEmail} />
             </div>
 
             <div className="password">
                 <input type="password" name="password" placeholder='Enter your password' onChange={handlePassword} />
             </div>
 
-            <div className="forgot-password">
-                <a href="#">Forgot password?</a>
-            </div>
-
             <div className="button">
-                <button onClick={handleSubmit}>Login</button>
+                <button onClick={handleSubmit}>Signup</button>
             </div>
 
             <div className="no-account">
                 <p>
-                    Don't have an account? 
-                    <Link to='/register'> Signup now</Link>
+                    Already have an account? 
+                    <Link to='/login'> Login now</Link>
                 </p>
             </div>
            
@@ -103,4 +107,4 @@ const LoginForm = () => {
   )
 }
 
-export default LoginForm
+export default RegisterForm
