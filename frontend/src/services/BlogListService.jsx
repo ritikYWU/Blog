@@ -1,17 +1,21 @@
-import endpoints from "./apiConfig"
+import endpoints from "./apiConfig";
 
-const BlogListService = async () => {
-    const url = endpoints.blog_posts
+const BlogListService = async (pagination_url) => {
+    let url = endpoints.blog_posts;
 
-    const response = await fetch(url)
-
-    if (response.ok){
-        const data = await response.json()
-        // console.log('response', data)
-        return data
+    if (pagination_url) {
+        url = pagination_url;
     }
 
-    return false
-}
+    const response = await fetch(url);
 
-export default BlogListService
+    if (response.ok) {
+        const data = await response.json();
+        // console.log('response', data)
+        return data;
+    }
+
+    return false;
+};
+
+export default BlogListService;

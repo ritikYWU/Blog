@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Dancing+Script&family=Roboto:wght@300&display=swap');
 
-.hero{
+.hero, .center-hero{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,7 +9,7 @@
 .banner{
     text-align: center;
     height: 25vh;
-    background-color: #579BB1;
+    background-color: rgba(87, 155, 177, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;

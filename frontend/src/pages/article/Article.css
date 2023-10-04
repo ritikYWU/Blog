@@ -1,0 +1,32 @@
+.article-head {
+    font-size: 4rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 2rem 0 3rem;
+}
+
+.article {
+    margin: 2rem 2rem;
+    display: flex;
+    justify-content: space-around;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+.next {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.next button {
+    margin: 2rem 0;
+    width: 5rem;
+    padding: 1rem;
+    border-radius: 10px;
+    border: none;
+    background-color: #434242;
+    color: #fff;
+    font-weight: 500;
+}

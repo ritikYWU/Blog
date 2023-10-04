@@ -1,35 +1,35 @@
-.blog-post{
+.blog-post {
     margin: 2rem 10rem;
     display: flex;
     justify-content: center;
     gap: 1rem;
     max-width: 70%;
-    max-height: 45vh;
-    background-color:  rgba(87, 155, 177, 0.1);
-    
+    max-height: 35vh;
+    background-color: rgba(87, 155, 177, 0.1);
+    color: #000 !important;
 }
 
-.blog-post img{
+.blog-post img {
     width: 50%;
 }
 
-.content{
+.content {
     width: 70%;
     padding: 1rem 1rem;
     display: flex;
     justify-content: left;
     flex-direction: column;
-    gap: .7rem;
+    gap: 0.7rem;
 }
 
-.content h3{
+.content h3 {
     font-size: 4.5rem;
 }
 
-.content p{
-    font-size: .8rem;
+.content p {
+    font-size: 0.8rem;
     width: 100%;
-    white-space: pre-wrap;
+    /* white-space: pre-wrap; */
     overflow: hidden;
     text-overflow: ellipsis;
 }

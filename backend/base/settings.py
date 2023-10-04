@@ -34,15 +34,15 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
 
-    'users',            #drf token authentication
-    'auth_jwt',         #simplejwt
+    'users',  # drf token authentication
+    'auth_jwt',  # simplejwt
     'blog'
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-        
+
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -50,7 +50,6 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
 }
-
 
 
 SIMPLE_JWT = {
@@ -107,6 +106,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",
+    "http://localhost:5173",
 ]
 
 ROOT_URLCONF = 'base.urls'
@@ -160,8 +160,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -183,3 +181,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import os
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

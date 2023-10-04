@@ -15,6 +15,8 @@ h3{
 
 .about{
     width: 20%;
+    letter-spacing: .1px;
+    line-height: 1.7;
 }
 
 .info ul{
@@ -30,10 +32,10 @@ h3{
     text-decoration: underline;
 }
 
-.newsletter{
+.newsletter, .newsletter form{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     align-items: center;
     gap: 1rem;
 }
@@ -50,5 +52,4 @@ h3{
     background-color: #579BB1;
     font-weight: 700;
     letter-spacing: .2px;
-    margin-top: -1rem;
 }

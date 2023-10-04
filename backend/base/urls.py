@@ -6,6 +6,9 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('users.urls')),
@@ -14,4 +17,4 @@ urlpatterns = [
     path('api/login/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     path('api/blog/', include('blog.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

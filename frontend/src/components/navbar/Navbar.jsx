@@ -14,7 +14,7 @@ const Navbar = ({isLoggedIn}) => {
     return (
         <nav className='navbar'>
             <div className="brand">
-                Hash
+                <Link to='/'> Bloggy</Link>
             </div>
 
             <div className="links">
@@ -23,14 +23,14 @@ const Navbar = ({isLoggedIn}) => {
                         <Link to='/'>Home</Link>
                     </li>
                     <li className='nav-links'>
-                        <Link to='#'>Articles</Link>
+                        <Link to='/article'>Articles</Link>
                     </li>
                     <li className='nav-links'>
-                        <Link to='#'>Create</Link>
+                        <Link to='/'>Create</Link>
                     </li>
                 {isLoggedIn
                     ?<li className='nav-links'>
-                        <Link to='' className='btn-auth' onClick={handleLogOut}>Logout</Link>    
+                        <Link to='/' className='btn-auth' onClick={handleLogOut}>Logout</Link>    
                     </li>
                     : <li className='nav-links'>
                         <Link to='/register' className='btn-auth' >Get Started</Link>    
