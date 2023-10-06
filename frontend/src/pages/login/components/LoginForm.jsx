@@ -2,7 +2,6 @@ import React, { useState, useEffect} from 'react'
 import { toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
 
-
 import LogInService from '../../../services/LogInService'
 import './LoginForm.css'
 
@@ -46,6 +45,7 @@ const LoginForm = () => {
                 });
     
                 console.log('login successful')
+                window.location.reload(true)
                 navigate('/')
             }
             else{

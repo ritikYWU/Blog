@@ -5,6 +5,7 @@ import BlogListService from "../../services/BlogListService";
 import HeroBlog from "../../components/heroblog/HeroBlog";
 import Post from "../../components/post/Post";
 import Loading from "../../components/loading/Loading";
+import makeRoute from "../../services/makeRoute";
 
 import "./Home.css";
 
@@ -39,7 +40,7 @@ const Home = () => {
                 <>
                     <div className="hero">
                         <Link
-                            to={`/post/${data.results[0].id}`}
+                            to={`/post/${makeRoute(data.results[0].title)}`}
                             state={data.results[0]}
                             className="center-hero">
                             <HeroBlog
@@ -54,7 +55,6 @@ const Home = () => {
                     <div className="banner">Stay Curious</div>
                     <div className="blog_posts">
                         {data.results.map((post, index) => {
-                            console.log("index", index);
                             if (index) {
                                 return (
                                     <Post

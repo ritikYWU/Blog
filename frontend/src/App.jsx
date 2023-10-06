@@ -10,6 +10,8 @@ import Register from "./pages/register/Register";
 import DetailBlog from "./pages/detailBlog/DetailBlog";
 import Footer from "./components/footer/Footer";
 import Article from "./pages/article/Article";
+import Create from "./pages/createblog/Create";
+import Edit from "./pages/edit/Edit";
 
 function App() {
     const isLoggedIn = localStorage.getItem("accessToken");
@@ -22,8 +24,10 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="login" element={<Login />} />
                     <Route path="register" element={<Register />} />
-                    <Route path="post/:id" element={<DetailBlog />} />
-                    <Route path='/article' element={<Article />} />
+                    <Route path="post/:title" element={<DetailBlog />} />
+                    <Route path="/article" element={<Article />} />
+                    <Route path="/create" element={<Create />} />
+                    <Route path="/edit/:title" element={<Edit />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>

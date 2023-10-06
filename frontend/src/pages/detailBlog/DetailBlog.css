@@ -17,7 +17,18 @@
 }
 
 .detail-page .content-blog {
+    margin: 2rem 0 0;
     white-space: pre-line;
-    letter-spacing: .1px;
+    letter-spacing: 0.1px;
     line-height: 1.5;
+}
+
+.btn-edit {
+    position: relative;
+    padding: 1rem 2rem;
+    background-color: #000;
+    color: #fff !important;
+    border-radius: 10px;
+    border: none;
+    margin: 0.5rem 0 2rem;
 }

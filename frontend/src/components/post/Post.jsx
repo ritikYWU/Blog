@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import makeRoute from "../../services/makeRoute";
 // import '../heroblog/HeroBlog.css'
 import "./Post.css";
 
@@ -8,7 +10,7 @@ const Post = ({ post }) => {
 
     return (
         <div className="small-post" id={post.id}>
-            <Link to={`/post/${post.id}`} state={post}>
+            <Link to={`/post/${makeRoute(post.title)}`} state={post}>
                 <img src={`${post.picture}`} alt="" />
                 <div className="small-content">
                     <span className="small-date">{formatted_date}</span>
