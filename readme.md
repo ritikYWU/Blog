@@ -4,7 +4,7 @@
 
 It is a fullstack blog web application built with Django/Djanog Rest Framewok on the backend and React on the frontend.
 
-![Blog Website](https://github.com/your_username/your_repository/raw/main/path/to/your/image.png)
+![Blog Website](https://github.com/RitiKS-11/Blog/blob/master/frontend/src/assets/11.png)
 
 # Setup Django Server
 
