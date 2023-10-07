@@ -1,23 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { BiSolidUserCircle } from "react-icons/bi";
+
 import "./Navbar.css";
 
 const Navbar = ({ isLoggedIn }) => {
     const [auth, setAuth] = useState(false);
-
-    // const location = useLocation();
-
-    // useEffect(() => {
-    //     console.log(location.pathname)
-
-    // if (location.pathname == '/login' | location.pathname == '/register'){
-    //     setAuth(true)
-    // }
-    // else{
-    //     setAuth(false)
-    // }
-
-    // }, [auth])
+    const navigate = useNavigate();
 
     const handleLogOut = (e) => {
         localStorage.removeItem("accessToken");
@@ -26,6 +15,20 @@ const Navbar = ({ isLoggedIn }) => {
         localStorage.removeItem("id");
 
         window.location.reload(true);
+    };
+
+    const handleUser = (e) => {
+        navigate("/article");
+    };
+
+    const handleChange = (e) => {
+        const selected = e.target.value;
+        console.log(selected);
+        if (selected === "logout") {
+            handleLogOut();
+        } else if (selected === "user") {
+            handleUser();
+        }
     };
 
     return (
@@ -49,14 +52,39 @@ const Navbar = ({ isLoggedIn }) => {
                             <li className="nav-links">
                                 <Link to="/create">Create</Link>
                             </li>
+                            <li className="nav-links">
+                                <Link to="/search">Search</Link>
+                            </li>
                             {isLoggedIn ? (
                                 <li className="nav-links">
-                                    <Link
+                                    <div class="dropdown">
+                                        <BiSolidUserCircle className="user-icon" />
+                                        <select
+                                            id="dropdwon-detail"
+                                            onChange={handleChange}>
+                                            <option
+                                                value="user"
+                                                selected
+                                                disabled>
+                                                {localStorage
+                                                    .getItem("username")
+                                                    .toUpperCase()}
+                                            </option>
+                                            <option value="user">
+                                                Profile
+                                            </option>
+                                            <option value="logout">
+                                                Logout
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    {/* <Link
                                         to="/"
                                         className="btn-auth"
                                         onClick={handleLogOut}>
                                         Logout
-                                    </Link>
+                                    </Link> */}
                                 </li>
                             ) : (
                                 <li className="nav-links">

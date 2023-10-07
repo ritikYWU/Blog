@@ -6,6 +6,8 @@ const endpoints = {
     create: "http://127.0.0.1:8000/api/blog/create/",
     user: "http://127.0.0.1:8000/api/user/",
     edit: "http://127.0.0.1:8000/api/blog/update/",
+    search: "http://127.0.0.1:8000/api/blog/search/",
+
 };
 
 export default endpoints;

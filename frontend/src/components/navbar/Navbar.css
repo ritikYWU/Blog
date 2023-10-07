@@ -1,4 +1,4 @@
-.navbar{
+.navbar {
     /* width: 100%; */
     height: 7vh;
     background-color: rgba(87, 155, 177, 0.2);
@@ -10,38 +10,68 @@
     padding: 1rem 5rem;
 }
 
-.brand{
+.brand {
     font-size: 2rem;
     font-weight: 900;
 }
 
-.links ul{
+.links ul {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     gap: 2rem;
 }
 
-.nav-links{
+.nav-links {
     text-decoration: none;
     list-style: none;
     font-size: 1.1rem;
-    letter-spacing: .1px;
+    letter-spacing: 0.1px;
 }
 
-.nav-links a{
+.nav-links a {
     color: #000;
 }
 
-.nav-links button{
+.nav-links button {
     background-color: transparent;
     width: 0%;
 }
 
-.btn-auth{
+.btn-auth {
     background-color: #434242;
     color: #fff !important;
     padding: 1rem 2rem;
     border-radius: 10px;
     border: none;
     font-weight: 500;
+}
+
+.dropdown {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 10px;
+    top: 2%;
+}
+
+#dropdwon-detail {
+    padding: 1rem 0.5rem;
+    padding-left: 50px;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+#dropdwon-detail:focus {
+    outline: none;
 }

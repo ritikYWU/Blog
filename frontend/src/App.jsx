@@ -12,6 +12,7 @@ import Footer from "./components/footer/Footer";
 import Article from "./pages/article/Article";
 import Create from "./pages/createblog/Create";
 import Edit from "./pages/edit/Edit";
+import Search from "./pages/search/Search";
 
 function App() {
     const isLoggedIn = localStorage.getItem("accessToken");
@@ -28,6 +29,7 @@ function App() {
                     <Route path="/article" element={<Article />} />
                     <Route path="/create" element={<Create />} />
                     <Route path="/edit/:title" element={<Edit />} />
+                    <Route path="/search/" element={<Search />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>
