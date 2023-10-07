@@ -21,16 +21,17 @@ def blog_post_list(request):
     serialized_data = BlogSerializer(pagination_posts, many=True)
     return paginator.get_paginated_response(serialized_data.data)
 
+
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def blog_post(request, pk):
     try:
         blog_post = Blog.objects.get(pk=pk)
     except Blog.DoesNotExist:
-        return Response(data={"status":status.HTTP_400_BAD_REQUEST, "message":"Blog post not found"})
+        return Response(data={"status": status.HTTP_400_BAD_REQUEST, "message": "Blog post not found"})
 
     serialized_data = BlogSerializer(blog_post)
-    return Response(data={"status":status.HTTP_200_OK, "message":"Blog post succesfully retrieved", "data":serialized_data.data})
+    return Response(data={"status": status.HTTP_200_OK, "message": "Blog post succesfully retrieved", "data": serialized_data.data})
 
 
 @api_view(['POST'])
@@ -40,9 +41,9 @@ def create(request):
 
     if serialized_data.is_valid():
         serialized_data.save()
-        return Response(data={"status":status.HTTP_201_CREATED, "message":"Blog created successfully", "data":serialized_data.data})
-        
-    return Response(data={"status":status.HTTP_400_BAD_REQUEST, "message":serialized_data.errors})
+        return Response(data={"status": status.HTTP_201_CREATED, "message": "Blog created successfully", "data": serialized_data.data})
+
+    return Response(data={"status": status.HTTP_400_BAD_REQUEST, "message": serialized_data.errors})
 
 
 @api_view(['PATCH', 'PUT'])
@@ -51,17 +52,18 @@ def update(request, pk):
     try:
         blog_post = Blog.objects.get(pk=pk)
     except Blog.DoesNotExist:
-        return Response(data={"status":status.HTTP_404_NOT_FOUND, "message":"Blog not found"})
-    
+        return Response(data={"status": status.HTTP_404_NOT_FOUND, "message": "Blog not found"})
+
     if request.method == 'PATCH':
-        serialized_data = CreateBlogSerializer(blog_post, data=request.data, partial=True)
+        serialized_data = CreateBlogSerializer(
+            blog_post, data=request.data, partial=True)
     elif request.method == 'PUT':
         serialized_data = CreateBlogSerializer(blog_post, data=request.data)
 
     if serialized_data.is_valid():
         serialized_data.save()
-        return Response(data={"status":status.HTTP_202_ACCEPTED, "message":"Blog post updated successfully", "data":serialized_data.data})
-    return Response(data={"status":status.HTTP_400_BAD_REQUEST, "message":serialized_data.errors})
+        return Response(data={"status": status.HTTP_202_ACCEPTED, "message": "Blog post updated successfully", "data": serialized_data.data})
+    return Response(data={"status": status.HTTP_400_BAD_REQUEST, "message": serialized_data.errors})
 
 
 @api_view(['DELETE'])
@@ -70,19 +72,20 @@ def delete(request, pk):
     try:
         blog_post = Blog.objects.get(pk=pk)
         blog_post.delete()
-        return Response(data={"status":status.HTTP_200_OK, "message":"Blog post deleted"})
+        return Response(data={"status": status.HTTP_200_OK, "message": "Blog post deleted"})
     except blog_post.DoesNotExist:
-        return Response(data={"status":status.HTTP_404_NOT_FOUND, "message":"Blog not found"})
-    
+        return Response(data={"status": status.HTTP_404_NOT_FOUND, "message": "Blog not found"})
+
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 def search(request):
     query = request.data['query']
     paginator = PageNumberPagination()
 
     try:
-        results = Blog.objects.filter(Q(title__icontains=query) | Q(blog__icontains=query))
+        results = Blog.objects.filter(
+            Q(title__icontains=query) | Q(blog__icontains=query))
 
         paginated_results = paginator.paginate_queryset(results, request)
 

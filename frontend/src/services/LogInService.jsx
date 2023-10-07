@@ -25,7 +25,7 @@ const LogInService = async (username, password) => {
 
         console.log("login successful");
 
-        getUserInfo();
+        getUserInfo(username);
 
         return { success: true };
     } else {
@@ -34,8 +34,8 @@ const LogInService = async (username, password) => {
     }
 };
 
-const getUserInfo = async () => {
-    const username = localStorage.getItem("username");
+const getUserInfo = async (username) => {
+    // const username = localStorage.getItem("username");
     const url = endpoints.user + username;
 
     const response = await fetch(url);

@@ -46,6 +46,8 @@ const Create = () => {
                     position: "top-center",
                 });
                 navigate("/article");
+            } else {
+                console.log(response);
             }
         } catch (error) {
             toast.error(error, {
