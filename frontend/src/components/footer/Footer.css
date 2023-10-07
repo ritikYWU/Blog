@@ -1,4 +1,4 @@
-footer{
+footer {
     display: flex;
     gap: 2rem;
     justify-content: space-around;
@@ -9,17 +9,17 @@ footer{
     margin-top: 2rem;
 }
 
-h3{
+h3 {
     padding: 0 0 1rem;
 }
 
-.about{
+.about {
     width: 20%;
-    letter-spacing: .1px;
+    letter-spacing: 0.1px;
     line-height: 1.7;
 }
 
-.info ul{
+.info ul {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -27,12 +27,12 @@ h3{
     text-align: center;
 }
 
-.info ul li a{
+.info ul li a {
     color: #fff !important;
-    text-decoration: underline;
 }
 
-.newsletter, .newsletter form{
+.newsletter,
+.newsletter form {
     display: flex;
     flex-direction: column;
     /* justify-content: space-around; */
@@ -40,7 +40,7 @@ h3{
     gap: 1rem;
 }
 
-.newsletter input{
+.newsletter input {
     font-size: 1.1rem;
     padding: 1rem;
     outline: none;
@@ -48,8 +48,8 @@ h3{
     border-radius: 10px;
 }
 
-.btn-auth.subscribe{
-    background-color: #579BB1;
+.btn-auth.subscribe {
+    background-color: #579bb1;
     font-weight: 700;
-    letter-spacing: .2px;
+    letter-spacing: 0.2px;
 }

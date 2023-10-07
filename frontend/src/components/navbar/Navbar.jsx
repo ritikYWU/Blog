@@ -38,7 +38,7 @@ const Navbar = ({ isLoggedIn }) => {
             ) : (
                 <nav className="navbar">
                     <div className="brand">
-                        <Link to="/"> Bloggy</Link>
+                        <Link to="/">VorTeX</Link>
                     </div>
 
                     <div className="links">

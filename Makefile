@@ -19,4 +19,4 @@ dev:
 
 install-react:
 	@echo "Installing react dependencies"
-	@echo frontend && npm install
+	@cd frontend && npm install
