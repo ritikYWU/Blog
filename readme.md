@@ -6,6 +6,23 @@ It is a fullstack blog web application built with Django/Djanog Rest Framewok on
 
 ![Blog Website](https://github.com/RitiKS-11/Blog/blob/master/frontend/src/assets/11.png)
 
+The project is organized into several main components:
+
+-   `backend/`: Contains the Django server and API endpoints.
+-   `frontend/`: Houses the React frontend of the application.
+
+## Technologies Used
+
+-   Django
+-   Django Rest Framework
+-   React
+
+## Features
+
+-   User authentication and registration.
+-   Create, edit, and delete blog posts.
+-   Search for blog posts.
+
 # Setup Django Server
 
 Follow the below steps to setup and run the djagno server
