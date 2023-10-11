@@ -27,6 +27,26 @@ The project is organized into several main components:
 
 Follow the below steps to setup and run the djagno server
 
+
+##  For windows user as setting up make is a linux command
+
+### activating virtual environment
+```
+cd backend
+venv activate
+```
+### Installing requirements
+```
+pip install -r requirements.txt
+```
+
+## Migrations and running the server
+```
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+```
+##  For Linux users
 #### Install Dependencies
 
 ```
@@ -49,6 +69,17 @@ make runserver
 
 Follow the below steps to setup and run the frontend
 
+
+## For Windows user
+
+### Node installation
+```
+npm install
+```
+### Run the frontend
+```
+npm run dev
+```
 #### Install Dependencies
 
 ```
