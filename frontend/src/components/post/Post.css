@@ -8,6 +8,7 @@
     max-height: 22rem;
     background-color: rgba(87, 155, 177, 0.1);
     color: #000 !important;
+    object-fit: cover;
 }
 
 a {
@@ -19,6 +20,7 @@ a {
     max-width: 21rem;
     min-height: 11rem;
     max-height: 11rem;
+    object-fit: cover;
 }
 
 .small-content {
