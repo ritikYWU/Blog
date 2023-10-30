@@ -6,12 +6,15 @@ import HeroBlog from "../../components/heroblog/HeroBlog";
 import Post from "../../components/post/Post";
 import Loading from "../../components/loading/Loading";
 import makeRoute from "../../services/makeRoute";
+import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
 import "./Home.css";
 
 const Home = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const isLoggedIn = localStorage.getItem("accessToken");
 
     const fetchData = async () => {
         try {
@@ -34,6 +37,7 @@ const Home = () => {
 
     return (
         <>
+            <Navbar isLoggedIn={isLoggedIn} />
             {loading ? (
                 <Loading />
             ) : (
@@ -70,6 +74,7 @@ const Home = () => {
                     </div>
                 </>
             )}
+            <Footer />
         </>
     );
 };

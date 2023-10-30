@@ -5,10 +5,13 @@ import Post from "../../components/post/Post";
 import Loading from "../../components/loading/Loading";
 
 import "./Article.css";
+import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
 const Article = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const isLoggedIn = localStorage.getItem("accessToken");
 
     const fetchData = async (url) => {
         try {
@@ -38,6 +41,7 @@ const Article = () => {
 
     return (
         <>
+            <Navbar isLoggedIn={isLoggedIn} />
             {loading ? (
                 <Loading />
             ) : (
@@ -67,6 +71,7 @@ const Article = () => {
                             Next
                         </button>
                     </div>
+                    <Footer />
                 </>
             )}
         </>

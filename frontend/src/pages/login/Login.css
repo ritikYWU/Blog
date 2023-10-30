@@ -1,49 +1,49 @@
-.login{
+.login {
     width: 100%;
     height: 100%;
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr;
     gap: 10px;
-    
+
     overflow-x: hidden;
     overflow-y: hidden;
 }
 
-.icon{
+.icon {
     position: absolute;
     top: 3%;
     left: 2%;
     font-size: 3rem;
-    color: #579BB1;
+    color: #579bb1;
 }
 
-.left-login{
+.left-login {
     margin: auto 3rem;
     width: 80%;
 }
 
-.left-login h2{
+.left-login h2 {
     font-size: 3rem;
     color: #434242;
 }
 
-.left-login h2::after{
+.left-login h2::after {
     content: "";
     width: 6%;
     height: 3px;
-    background: #579BB1;
+    background: #579bb1;
     display: block;
     margin: left;
 }
 
-.right-login{
-    background-color: #579BB1;
+.right-login {
+    background-color: #579bb1;
     height: 100vh;
     z-index: -1;
 }
 
-.banner-text{
+.banner-text {
     background-color: transparent;
     font-size: 4rem;
     position: absolute;
@@ -55,13 +55,13 @@
     color: #434242;
 }
 
-.banner-text p{
+.banner-text p {
     font-size: 1.3rem;
     padding-top: 1rem;
     color: #fff;
 }
 
-.right-login img{
+.right-login img {
     height: 99.5vh;
     width: 120vh;
     opacity: 0.5;

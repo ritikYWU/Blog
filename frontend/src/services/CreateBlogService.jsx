@@ -1,52 +1,60 @@
 import endpoints from "./apiConfig"
 
 const CreateBlogService = async (data) => {
-
-    const token = localStorage.getItem('accessToken')
-
-    let url = endpoints.create
+    let token = localStorage.getItem('accessToken');
+    const refreshToken = localStorage.getItem('refreshToken');
+    
+    let url = endpoints.create;
 
     const response = await fetch(url, {
         method: 'POST',
         headers: {
-          // 'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}` 
+            'Authorization': `Bearer ${token}`
         },
         body: data,
-      });
-
+    });
 
     if (response.ok) {
-        const data = await response.json()
-        return data
+        const responseData = await response.json();
+        return responseData;
     }
-    
-    
-    
-    
-    
 
-    // else{
-    //     console.log('Blog Creation Failed')
-        
-    //     const refreshToken = localStorage.getItem('refreshToken')
-    //     console.log(refreshToken)
-    //     url = endpoints.refresh
+    if (response.status === 401) {
+        url = endpoints.refresh;
 
-    //     const response = await fetch(url, {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify({
-    //             refreshToken
-    //         })
-    //     })
+        const refreshResponse = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                refreshToken
+            })
+        });
 
-    //     console.log('refresh', response)
-    //     return data
-    // }
+        if (refreshResponse.ok) {
+            const refreshData = await refreshResponse.json();
+            
+            token = refreshData.accessToken;
+            localStorage.setItem('accessToken', token);
 
+            const retryResponse = await fetch(endpoints.create, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
+                body: data,
+            });
+
+            if (retryResponse.ok) {
+                const responseData = await retryResponse.json();
+                return responseData;
+            }
+        }
+    }
+
+    console.log('Blog Creation Failed');
+    return null;
 }
 
-export default CreateBlogService
+export default CreateBlogService;

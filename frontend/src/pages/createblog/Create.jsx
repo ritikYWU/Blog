@@ -5,6 +5,8 @@ import { toast } from "react-toastify";
 import CreateBlogService from "../../services/CreateBlogService";
 
 import "./Create.css";
+import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
 const Create = () => {
     const [data, setData] = useState({
@@ -14,6 +16,7 @@ const Create = () => {
         picture: "",
     });
     const navigate = useNavigate();
+    const isLoggedIn = localStorage.getItem("accessToken");
 
     const handleChange = (e) => {
         setData({
@@ -68,35 +71,39 @@ const Create = () => {
     }, []);
 
     return (
-        <div>
-            <form className="create" encType="multipart/form-data">
-                <input
-                    type="text"
-                    onChange={handleChange}
-                    name="title"
-                    value={data.title}
-                    className="create-title"
-                    placeholder="Enter title here"
-                />
-                <input
-                    type="file"
-                    onChange={handleImage}
-                    name="picture"
-                    className="create-file"
-                />
-                <textarea
-                    name="blog"
-                    cols="30"
-                    rows="18"
-                    onChange={handleChange}
-                    value={data.blog}
-                    className="create-blog"
-                    placeholder="Enter the blog here"></textarea>
-                <button className="btn-add" onClick={handleClick}>
-                    Add Blog
-                </button>
-            </form>
-        </div>
+        <>
+            <Navbar isLoggedIn={isLoggedIn} />
+            <div>
+                <form className="create" encType="multipart/form-data">
+                    <input
+                        type="text"
+                        onChange={handleChange}
+                        name="title"
+                        value={data.title}
+                        className="create-title"
+                        placeholder="Enter title here"
+                    />
+                    <input
+                        type="file"
+                        onChange={handleImage}
+                        name="picture"
+                        className="create-file"
+                    />
+                    <textarea
+                        name="blog"
+                        cols="30"
+                        rows="18"
+                        onChange={handleChange}
+                        value={data.blog}
+                        className="create-blog"
+                        placeholder="Enter the blog here"></textarea>
+                    <button className="btn-add" onClick={handleClick}>
+                        Add Blog
+                    </button>
+                </form>
+            </div>
+            <Footer />
+        </>
     );
 };
 

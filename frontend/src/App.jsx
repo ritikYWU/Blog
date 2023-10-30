@@ -15,12 +15,10 @@ import Edit from "./pages/edit/Edit";
 import Search from "./pages/search/Search";
 
 function App() {
-    const isLoggedIn = localStorage.getItem("accessToken");
-
     return (
         <>
             <BrowserRouter>
-                <Navbar isLoggedIn={isLoggedIn} />
+                {/* <Navbar isLoggedIn={isLoggedIn} /> */}
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="login" element={<Login />} />
@@ -31,7 +29,7 @@ function App() {
                     <Route path="/edit/:title" element={<Edit />} />
                     <Route path="/search/" element={<Search />} />
                 </Routes>
-                <Footer />
+                {/* <Footer /> */}
             </BrowserRouter>
         </>
     );

@@ -3,11 +3,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import EditBlogService from "../../services/EditBlogService";
+import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
 const Edit = () => {
     const [data, setData] = useState();
     const location = useLocation();
     const navigate = useNavigate();
+    const isLoggedIn = localStorage.getItem("accessToken");
 
     const handleChange = (e) => {
         setData({
@@ -62,44 +65,48 @@ const Edit = () => {
     }, []);
 
     return (
-        <div>
-            {data ? (
-                <form className="create" encType="multipart/form-data">
-                    <label>Title</label>
-                    <input
-                        type="text"
-                        onChange={handleChange}
-                        name="title"
-                        value={data.title}
-                        className="create-title"
-                        placeholder="Enter title here"
-                    />
-                    <label className="warn">
-                        *Upload image only to change the previous image
-                    </label>
-                    <input
-                        type="file"
-                        onChange={handleImage}
-                        name="picture"
-                        className="create-file"
-                    />
-                    <label>Blog</label>
-                    <textarea
-                        name="blog"
-                        cols="30"
-                        rows="22"
-                        onChange={handleChange}
-                        value={data.blog}
-                        className="create-blog"
-                        placeholder="Enter the blog here"></textarea>
-                    <button className="btn-add" onClick={handleClick}>
-                        Update
-                    </button>
-                </form>
-            ) : (
-                <></>
-            )}
-        </div>
+        <>
+            <Navbar isLoggedIn={isLoggedIn} />
+            <div>
+                {data ? (
+                    <form className="create" encType="multipart/form-data">
+                        <label>Title</label>
+                        <input
+                            type="text"
+                            onChange={handleChange}
+                            name="title"
+                            value={data.title}
+                            className="create-title"
+                            placeholder="Enter title here"
+                        />
+                        <label className="warn">
+                            *Upload image only to change the previous image
+                        </label>
+                        <input
+                            type="file"
+                            onChange={handleImage}
+                            name="picture"
+                            className="create-file"
+                        />
+                        <label>Blog</label>
+                        <textarea
+                            name="blog"
+                            cols="30"
+                            rows="22"
+                            onChange={handleChange}
+                            value={data.blog}
+                            className="create-blog"
+                            placeholder="Enter the blog here"></textarea>
+                        <button className="btn-add" onClick={handleClick}>
+                            Update
+                        </button>
+                    </form>
+                ) : (
+                    <></>
+                )}
+            </div>
+            <Footer />
+        </>
     );
 };
 

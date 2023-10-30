@@ -7,7 +7,7 @@ const Register = () => {
     return (
         <div className="login">
             <div className="icon">
-                <Link to="/">#Hash</Link>
+                <Link to="/">VorTeX</Link>
             </div>
             <div className="left-login">
                 <h2>Signup</h2>

@@ -4,10 +4,13 @@ import { AiOutlineSearch } from "react-icons/ai";
 import SearchService from "../../services/SearchService";
 import Post from "../../components/post/Post";
 import "./Search.css";
+import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
 const Search = () => {
     const [query, setQuery] = useState();
     const [data, setData] = useState();
+    const isLoggedIn = localStorage.getItem("accessToken");
 
     const handleChange = (e) => {
         setQuery(e.target.value);
@@ -22,33 +25,39 @@ const Search = () => {
     };
 
     return (
-        <div className="search">
-            <div className="search-article">
-                <div className="input">
-                    <input
-                        type="text"
-                        placeholder="Search Article"
-                        onChange={handleChange}
-                    />
-                    <AiOutlineSearch
-                        className="search-icon"
-                        onClick={handleClick}
-                    />
+        <>
+            <Navbar isLoggedIn={isLoggedIn} />
+
+            <div className="search">
+                <div className="search-article">
+                    <form className="input">
+                        <input
+                            type="text"
+                            placeholder="Search Article"
+                            onChange={handleChange}
+                        />
+                        <button onClick={handleClick} className="search-icon">
+                            <AiOutlineSearch />
+                        </button>
+                    </form>
                 </div>
+                {data ? (
+                    <>
+                        <h3 className="query-search">
+                            Search Result for {query}
+                        </h3>
+                        <div className="results">
+                            {data.results.map((post) => (
+                                <Post post={post} key={post.id} id={post.id} />
+                            ))}
+                        </div>
+                    </>
+                ) : (
+                    <></>
+                )}
             </div>
-            {data ? (
-                <>
-                    <h3 className="query-search">Search Result for {query}</h3>
-                    <div className="results">
-                        {data.results.map((post) => (
-                            <Post post={post} key={post.id} id={post.id} />
-                        ))}
-                    </div>
-                </>
-            ) : (
-                <></>
-            )}
-        </div>
+            <Footer />
+        </>
     );
 };
 

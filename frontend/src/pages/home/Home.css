@@ -1,13 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Dancing+Script&family=Roboto:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Dancing+Script&family=Roboto:wght@300&display=swap");
 
-.hero, .center-hero{
+.hero,
+.center-hero {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
 }
 
-.banner{
+.banner {
     text-align: center;
     height: 25vh;
     background-color: rgba(87, 155, 177, 0.2);
@@ -16,13 +17,12 @@
     align-items: center;
     font-size: 5rem;
     font-weight: 700;
-    font-family: 'Cedarville Cursive', cursive;
-    font-family: 'Dancing Script', cursive;
+    font-family: "Cedarville Cursive", cursive;
+    font-family: "Dancing Script", cursive;
     margin: 2rem 4rem;
 }
 
-
-.blog_posts{
+.blog_posts {
     display: flex;
     justify-content: space-around;
     align-items: center;

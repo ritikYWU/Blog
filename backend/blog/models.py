@@ -13,3 +13,12 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Comments(models.Model):
+    comment = models.TextField(max_length=500)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.comment

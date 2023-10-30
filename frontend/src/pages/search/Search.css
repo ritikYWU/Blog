@@ -31,6 +31,9 @@
 
 .input .search-icon {
     font-size: 1.5rem;
+    background: transparent !important;
+    border: none;
+    outline: none;
 }
 
 .query-search {
