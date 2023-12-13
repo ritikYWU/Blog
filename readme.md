@@ -23,6 +23,12 @@ The project is organized into several main components:
 -   Create, edit, and delete blog posts.
 -   Search for blog posts.
 
+
+# Run the project with docker
+```
+docker-compose up
+```
+
 # Setup Django Server
 
 Follow the below steps to setup and run the djagno server
