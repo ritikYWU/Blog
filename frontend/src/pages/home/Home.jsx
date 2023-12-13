@@ -21,10 +21,11 @@ const Home = () => {
             const response = await BlogListService();
             if (response) {
                 setData(response);
-                // console.log('Fetched data:', response);
+                console.log('Fetched data:', response);
                 setLoading(false);
             } else {
                 console.log("No response");
+
             }
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -35,18 +36,16 @@ const Home = () => {
         fetchData();
     }, []);
 
-    return (
-        <>
-            <Navbar isLoggedIn={isLoggedIn} />
-            {loading ? (
-                <Loading />
-            ) : (
-                <>
+    const check_result = (data) => {
+        if (data && data.results && data.results.length > 0) {
+            return (
+                <div>
                     <div className="hero">
                         <Link
                             to={`/post/${makeRoute(data.results[0].title)}`}
                             state={data.results[0]}
-                            className="center-hero">
+                            className="center-hero"
+                        >
                             <HeroBlog
                                 post={
                                     data.results && data.results.length > 0
@@ -58,20 +57,26 @@ const Home = () => {
                     </div>
                     <div className="banner">Stay Curious</div>
                     <div className="blog_posts">
-                        {data.results.map((post, index) => {
-                            if (index) {
-                                return (
-                                    <Post
-                                        post={post}
-                                        key={post.id}
-                                        id={post.id}
-                                    />
-                                );
-                            } else {
-                                return null;
-                            }
-                        })}
+                        {data.results.slice(1).map((post) => (
+                            <Post post={post} key={post.id} id={post.id} />
+                        ))}
                     </div>
+                </div>
+            );
+        } else {
+            return <div>No Content</div>;
+        }
+    };
+    
+
+    return (
+        <>
+            <Navbar isLoggedIn={isLoggedIn} />
+            {loading ? (
+                <Loading />
+            ) : (
+                <>
+                  {check_result(data)}  
                 </>
             )}
             <Footer />
